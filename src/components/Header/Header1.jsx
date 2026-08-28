@@ -1,9 +1,10 @@
 import React from "react";
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useSignOut from "react-auth-kit/hooks/useSignOut";
 import useAuthUser from "react-auth-kit/hooks/useAuthUser";
-import classes from "./Header.module.css";
+import { useNavigate } from "react-router-dom";
+import classes from "./Header1.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function DashboardHeader() {
@@ -16,6 +17,13 @@ function DashboardHeader() {
     signOut();
     navigate("/login");
   };
+
+  // 0 user (default)
+  // 1 lab technician  (operator)
+  // 2  TA
+  // 3  admin
+  // 4  super-admin
+  // 5   professor
 
   const navLinks = {
     0: [
@@ -43,7 +51,7 @@ function DashboardHeader() {
       { to: "/addProfessors", label: "Add Professor" },
       { to: "/ListOfAllUsers", label: "All Users" },
       { to: "/userRoleUpdate", label: "Privilege" },
-      // { to: "/deleteOldData", label: "Clean Old Data" },
+      { to: "/deleteOldData", label: "Clean Old Data" },
       { to: "/blockBooking", label: "Block Booking" },
       { to: "/EquipStatusUpdate", label: "Alter Equipment Status" },
       { to: "/notification", label: "Notification" },
@@ -55,7 +63,7 @@ function DashboardHeader() {
       { to: "/addProfessors", label: "Add Professor" },
       { to: "/ListOfAllUsers", label: "All Users" },
       { to: "/userRoleUpdate", label: "Privilege" },
-      // { to: "/deleteOldData", label: "Clean Old Data" },
+      { to: "/deleteOldData", label: "Clean Old Data" },
       { to: "/blockBooking", label: "Block Booking" },
       { to: "/EquipStatusUpdate", label: "Alter Equipment Status" },
       { to: "/notification", label: "Notification" },
@@ -68,9 +76,9 @@ function DashboardHeader() {
   };
 
   const commonLinks = [
-    // { to: "https://ch.iitr.ac.in/", label: "Department Site", external: true },
+    { to: "https://ch.iitr.ac.in/", label: "Department Site", external: true },
     { to: "/ack", label: "Acknowledgement" },
-    // { to: "/about", label: "About" },
+    { to: "/about", label: "About" },
   ];
 
   return (
@@ -81,11 +89,13 @@ function DashboardHeader() {
       sticky="top"
       collapseOnSelect
     >
-      <Container fluid className={classes.container}>
-        {/* <Navbar.Brand as={Link} to="/dashboard" className={classes.brand}>
+      <Container fluid>
+        {/* Brand */}
+        <Navbar.Brand as={Link} to="/dashboard" className={classes.brand}>
           Booking Portal
-        </Navbar.Brand> */}
+        </Navbar.Brand>
 
+        {/* ✅ Fixed Navbar Toggler */}
         <Navbar.Toggle
           aria-controls="main-navbar-nav"
           className={classes.navbarToggler}
@@ -93,11 +103,8 @@ function DashboardHeader() {
           <span className="navbar-toggler-icon" />
         </Navbar.Toggle>
 
-        <Navbar.Collapse
-          id="main-navbar-nav"
-          className={classes.navbarCollapse}
-        >
-          <Nav className={`${classes.navLinks} me-auto`}>
+        <Navbar.Collapse id="main-navbar-nav">
+          <Nav className="me-auto">
             {navLinks[role]?.map((link, index) =>
               link.external ? (
                 <Nav.Link
@@ -120,7 +127,6 @@ function DashboardHeader() {
                 </Nav.Link>
               ),
             )}
-
             {commonLinks.map((link, index) =>
               link.external ? (
                 <Nav.Link
@@ -146,17 +152,11 @@ function DashboardHeader() {
           </Nav>
 
           {role !== undefined && (
-            <div className={classes.userSection}>
+            <div className="d-flex align-items-center gap-3">
               <span className={classes.welcomeText}>
                 Welcome, <strong>{auth?.userName}</strong>
               </span>
-
-              <Button
-                variant="danger"
-                size="sm"
-                onClick={logOut}
-                className={classes.logoutButton}
-              >
+              <Button variant="danger" size="sm" onClick={logOut}>
                 Log Out
               </Button>
             </div>
