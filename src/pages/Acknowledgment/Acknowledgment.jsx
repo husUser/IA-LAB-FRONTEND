@@ -20,17 +20,36 @@ const Acknowledgement = () => {
             <div className="icon-wrapper">🙏</div>
             <h2 className="section-title">Expression of Gratitude</h2>
           </div>
-          <p className="content-text">
-            The development team would like to express sincere gratitude for the
-            support and permission granted to implement this web application in
-            a practical, real-world setting.
+          <p
+            className="content-text text-justify"
+            style={{ textAlign: "justify" }}
+          >
+            The development team would like to express their sincere gratitude
+            to Prof. Prasenjit Mondal (Head of the Department),Prof. Prakash
+            Biswas, and Prof. Deepak Kumar Ojha for their valuable support, and
+            permission to implement this web application in a practical,
+            real-world setting. We are especially grateful to Prof. Deepak Kumar
+            Ojha for his exceptional support, facilitation, motivation, and
+            continuous encouragement during the development of this booking web
+            application. We extend our special thanks to Dr. Anuj Kumar, Dr.
+            Kanchna Bhatrola, Dr. Mahendra Kumar Meena, and Mr. Deepesh Bhatt
+            for their valuable assistance, input, and cooperation throughout the
+            development and implementation of the application. We also extend
+            our heartfelt thanks to Mrs. Swati Dhyani, Mr. Arvind Kumar, and Mr.
+            Santosh Kumar for their assistance. Our sincere appreciation also
+            goes to all non-teaching staff and departmental staff members for
+            their cooperation, support, and contribution toward the successful
+            implementation and adoption of the application. The development team
+            gratefully acknowledges the collective support, encouragement, and
+            cooperation received from everyone involved, which made the
+            successful realization of this web application possible.
           </p>
 
-          <p className="content-text">
+          {/* <p className="content-text">
             The encouragement and approval received played a vital role in
             enabling the successful deployment of this system and its adoption
             for broader use.
-          </p>
+          </p> */}
           {/* <p className="content-text ">
             The developer team would like to express sincere gratitude to
             Department committee, for the support and granting permission to
